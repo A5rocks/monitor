@@ -19,6 +19,7 @@ KEY = configuration["bot"]["key"]
 ID = configuration["bot"]["id"]
 IMAGE = configuration["container"]["image"]
 PORTS = configuration["container"]["ports"]
+ENVIRONMENT = configuration["container"].get("environment", {})
 
 
 @click.command("sync")
@@ -127,6 +128,7 @@ def run_image(tag: str, token: str) -> None:
                     {"container_port": port["container"], "host_port": port["host"]}
                     for port in PORTS
                 ],
+                "env": ENVIRONMENT
             },
         )
         r.raise_for_status()

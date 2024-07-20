@@ -6,3 +6,4 @@
 [container]
 image = "docker.io/library/httpd"
 ports = [{container = 80, host = 3001}]
+environment = {}
